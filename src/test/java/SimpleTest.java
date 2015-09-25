@@ -1,3 +1,5 @@
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -12,6 +14,9 @@ import java.util.Arrays;
 public class SimpleTest {
     @Test
     public void test() {
+        Logger.getLogger("org").setLevel(Level.WARN);
+        Logger.getLogger("akka").setLevel(Level.WARN);
+
         JavaSparkContext jsc = new JavaSparkContext("local[4]", "testapp");
 
         final JavaRDD<String> words = jsc.parallelize(Arrays.asList("hello", "world"));
