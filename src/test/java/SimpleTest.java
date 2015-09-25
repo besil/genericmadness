@@ -20,7 +20,6 @@ public class SimpleTest {
         JavaSparkContext jsc = new JavaSparkContext("local[4]", "testapp");
 
         final JavaRDD<String> words = jsc.parallelize(Arrays.asList("hello", "world"));
-//        final JavaPairRDD<String, String> wordCount = words.mapToPair(word -> new Tuple2(word, "1"));
 
         final JavaPairRDD<String, Long> rdd = words
                 .mapToPair(word -> new Tuple2(word, "1"))
