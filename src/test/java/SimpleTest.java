@@ -25,6 +25,11 @@ public class SimpleTest {
                 .mapToPair(word -> new Tuple2(word, "1"))
                 .countApproxDistinctByKey(0.01);
 
+//        This correctly does not compile
+//        final JavaPairRDD<String, Long> rdd2 = words
+//                .mapToPair(word -> new Tuple2<>(word, "1"))
+//                .countApproxDistinctByKey(0.01);
+
         rdd.collect().forEach(System.out::println);
 
     }
